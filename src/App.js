@@ -20,18 +20,18 @@ const requestOptions = {
 function App() {
 
   // change api to fixer /latest endpoint
-  useEffect(() => {
-    fetch("https://api.apilayer.com/fixer/latest?app_id=02ab4396e47b4123939aac1a82bbd845", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        const entries = Object.entries(result.rates)
-        console.log(entries)
-        console.log(entries[0][1])
-        console.log(entries[1][1])
-        setRates(entries || []);
-      })
-      .catch((error) => console.log("error", error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://api.apilayer.com/fixer/latest?app_id=02ab4396e47b4123939aac1a82bbd845", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       const entries = Object.entries(result.rates)
+  //       console.log(entries)
+  //       console.log(entries[0][1])
+  //       console.log(entries[1][1])
+  //       setRates(entries || []);
+  //     })
+  //     .catch((error) => console.log("error", error));
+  // }, []);
 
   const [amount1, setAmount1] = useState();
   const [amount2, setAmount2] = useState();
