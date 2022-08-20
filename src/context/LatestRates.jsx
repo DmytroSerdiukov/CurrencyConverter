@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import * as axios from 'axios'
 
 export const LatestRatesContext = createContext()
 
