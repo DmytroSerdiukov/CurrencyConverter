@@ -21,9 +21,9 @@ const WithConvertContext = ({ children }) => {
     const [rates, setRates] = useState()
 
     const convert = (to, from, amount) => {
-        fetch("https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from}&amount={amount}", requestOptions)
+        fetch("https://api.apilayer.com/currency_data/list", requestOptions)
         .then(response => response.json())
-        .then(result => setRates(result))
+        .then(result => setRates(result.symbols))
         .catch(error => console.log('error', error));
     }
 

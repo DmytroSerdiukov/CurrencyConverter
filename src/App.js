@@ -8,15 +8,26 @@ import Input from "./stories/Input/Input";
 import Select from "./stories/Select/Select";
 
 
+const myHeaders = new Headers();
+myHeaders.append("apikey", "qeUEC9JoJMhxtV0nRrxqJZs6Lj5W4ayK");
+
+const requestOptions = {
+  method: 'GET',
+  redirect: 'follow',
+  headers: myHeaders
+};
+
 function App() {
+
+  // change api to fixer /latest endpoint
   useEffect(() => {
-    fetch("https://openexchangerates.org/api/latest.json?app_id=02ab4396e47b4123939aac1a82bbd845", {
-      // app_id: "7fcdf9400ae74d1a9896e9bf5392a69a",
-      AccessAllowControlOrigin: "*",
-    })
+    fetch("https://api.apilayer.com/fixer/latest?app_id=02ab4396e47b4123939aac1a82bbd845", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         const entries = Object.entries(result.rates)
+        console.log(entries)
+        console.log(entries[0][1])
+        console.log(entries[1][1])
         setRates(entries || []);
       })
       .catch((error) => console.log("error", error));
@@ -24,42 +35,55 @@ function App() {
 
   const [amount1, setAmount1] = useState();
   const [amount2, setAmount2] = useState();
-  const [currency1, setCurrency1] = useState(1);
-  const [currency2, setCurrency2] = useState(1);
-  const [rates, setRates] = useState();
+  const [currency1, setCurrency1] = useState();
+  const [currency2, setCurrency2] = useState();
+  const [rates, setRates] = useState([['UAH', 36.5], ['USD', 1], ['GBP', 1.2]]);
+
+  console.log(currency1, currency2)
 
   const handleAmount1Change = (amount1) => {
-    console.log(amount1)
-    setAmount2((amount1 * currency2) / currency1);
-    // setAmount2((amount1 * currency2) / 2);
+    if (currency1 === currency2) {
+      setAmount2(amount1)
+      setAmount1(amount1)
+      return
+    }
+    // setAmount1(amount2 * currency1 / currency2);
+    setAmount2(amount1 * currency2 / currency1);
     setAmount1(amount1);
   };
 
-  const handleAmount2Change = (amount2) => {
-    setAmount1((amount2 * currency1) / currency2);
-    // setAmount1((amount2 * currency1) / 2);
-    setAmount2(amount2);
-  };
-
   const handleCurrency1Change = (currency1) => {
-    if(isNaN(amount1)) {
-      setAmount1(0)
+    if (currency1 === currency2) {
+      setAmount2(amount2)
+      setAmount1(amount2)
+      setCurrency1(currency1);
       return
     }
-    setAmount2((amount1 * currency2) / currency1)
-    // setAmount2((amount1 * currency2) / 0.027);
+    setAmount2(amount2 * currency2 / currency1)
+    console.log('currency1', amount1, currency2, currency1)
+
     setCurrency1(currency1);
   };
 
-  const handleCurrency2Change = (currency2) => {
-    console.log(currency1)
-    if(isNaN(amount2)) {
-      setAmount2(0)
+  const handleAmount2Change = (amount2) => {
+    if (currency1 === currency2) {
+      setAmount2(amount2)
+      setAmount1(amount2)
       return
-
     }
-    setAmount1((amount2 * currency1) / currency2);
-    // setAmount1((amount2 * currency1) / 0.027);
+    setAmount1(amount2 * currency1 / currency2);
+    setAmount2(amount2);
+  };
+
+  const handleCurrency2Change = (currency2) => {
+    if (currency2 === currency1) {
+      setCurrency2(currency2);
+      setAmount2(amount1)
+      setAmount1(amount1)
+      return
+    }
+    // console.log('currency2', amount2, currency1, currency2)
+    setAmount2(amount1 * currency2 / currency1)
     setCurrency2(currency2);
   };
 
@@ -77,7 +101,6 @@ function App() {
         sx={{paddingTop: 10, width: 1024, height: '100vh', background: '#fff' }}
         justifyContent={"center"}
         alignItems={'flex-start'}
-        // spacing={5}
       >
         <Grid
           container
@@ -90,6 +113,7 @@ function App() {
           flexDirection={"column"}
         >
           <Select
+            currency={currency1}
             rates={rates}
             onCurrencyHandle={handleCurrency1Change}
           />
@@ -106,6 +130,7 @@ function App() {
           flexDirection={"column"}
         >
           <Select
+            currency={currency2}
             rates={rates}
             onCurrencyHandle={handleCurrency2Change}
           />

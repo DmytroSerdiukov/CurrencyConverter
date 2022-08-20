@@ -4,7 +4,7 @@ import * as axios from 'axios'
 export const LatestRatesContext = createContext()
 
 const myHeaders = new Headers();
-myHeaders.append("apikey", "NSCd6Ggc8y2DHRtb5oDYq75krLBARfFz");
+myHeaders.append("apikey", "qeUEC9JoJMhxtV0nRrxqJZs6Lj5W4ayK");
 
 const requestOptions = {
   method: 'GET',
@@ -23,21 +23,18 @@ const WithLatestRates = ({children}) => {
     const [EUR, setEUR] = useState('-')
 
     const fetchDollarLatestRate = async() => {
-        fetch("https://api.apilayer.com/exchangerates_data/latest?symbols=uah&base=USD", requestOptions)
+        fetch("https://api.apilayer.com/fixer/latest?symbols=uah&base=usd", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result.rates.UAH.toFixed(2))
             setUSD(result.rates.UAH.toFixed(2))
         })
         .catch(error => console.log('error', error));
-        // setUSD(dollar)
     }
 
     const fetchEuroLatestRate = async() => {
-        fetch("https://api.apilayer.com/exchangerates_data/latest?symbols=uah&base=EUR", requestOptions)
+        fetch("https://api.apilayer.com/fixer/latest?symbols=uah&base=EUR", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result.rates.UAH)
             setEUR(result.rates.UAH.toFixed(2))
         })
         .catch(error => console.log('error', error));
