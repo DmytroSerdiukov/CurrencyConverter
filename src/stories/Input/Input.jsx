@@ -41,7 +41,7 @@ function Input({
             value={amount}
             error={error}
             helperText={error || 'Enter currency value. Use only numbers'}
-            
+            inputProps={{ inputMode: 'numeric' }}
             type={'numeric'} 
             label={'Value'}
             onChange = {onValueChange}
