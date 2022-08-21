@@ -18,6 +18,7 @@ function Input({
       sx={{
         width: 250,
         marginTop: 3,
+        marginBottom: 3
       }}
       focused={true}
       value={amount}

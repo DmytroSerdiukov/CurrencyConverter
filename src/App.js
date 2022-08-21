@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
 import WithLatestRates from "./context/LatestRates";
@@ -93,6 +93,7 @@ function App() {
           alignItems={"center"}
           flexDirection={"column"}
         >
+          <Typography sx={{marginBottom: 5}} component={'span'}>Changing</Typography>
           <Select
             currency={currency1}
             rates={rates}
@@ -111,6 +112,7 @@ function App() {
           alignItems={"center"}
           flexDirection={"column"}
         >
+          <Typography sx={{marginBottom: 5}} component={'span'}>Get</Typography>
           <Select
             currency={currency2}
             rates={rates}
