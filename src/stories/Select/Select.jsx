@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  InputLabel,
   MenuItem,
-  Select as MUISelect,
   TextField,
 } from "@mui/material";
 
-function Select({ label, rates, onCurrencyHandle, currency, ...props }) {
+function Select({ label, rates, onCurrencyHandle, currency, defaultValue, ...props }) {
   const [value, setValue] = React.useState();
 
   const handleChange = (event) => {
@@ -22,7 +20,7 @@ function Select({ label, rates, onCurrencyHandle, currency, ...props }) {
         sx={{
           width: 250,
         }}
-        value={value || ""}
+        value={value || defaultValue}
         onChange={handleChange}
         select // tell TextField to render select
         label="Currency"
