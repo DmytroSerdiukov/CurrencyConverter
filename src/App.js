@@ -16,7 +16,7 @@ function App() {
   const [rates, setRates] = useState([
     ["Ukrainian Hrivnya", 36.79],
     ["United States Dollar", 1],
-    ["Euro", 1.2],
+    ["Euro", 0.9955],
   ]);
 
   const handleAmount1Change = (amount1) => {
@@ -31,19 +31,19 @@ function App() {
 
   const handleCurrency1Change = (currency1) => {
     if (currency1 === currency2) {
-      setAmount2(amount2);
-      setAmount1(amount2);
       setCurrency1(currency1);
+      setAmount2(amount1);
+      setAmount1(amount1);
       return;
     }
-    setAmount1((amount2 * currency1) / currency2);
+    setAmount2((amount1 * currency2) / currency1);
     setCurrency1(currency1);
   };
 
   const handleAmount2Change = (amount2) => {
     if (currency1 === currency2) {
-      setAmount2(amount2);
-      setAmount1(amount2);
+      setAmount2(amount1);
+      setAmount1(amount1);
       return;
     }
     setAmount1((amount2 * currency1) / currency2);
