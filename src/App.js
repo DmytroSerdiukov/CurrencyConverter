@@ -6,13 +6,12 @@ import Header from "./stories/Header/Header";
 import Input from "./stories/Input/Input";
 import Select from "./stories/Select/Select";
 
-
-
 function App() {
+
   const [amount1, setAmount1] = useState();
   const [amount2, setAmount2] = useState();
-  const [currency1, setCurrency1] = useState();
-  const [currency2, setCurrency2] = useState();
+  const [currency1, setCurrency1] = useState(36.79);
+  const [currency2, setCurrency2] = useState(1);
   const [rates, setRates] = useState([
     ["Ukrainian Hrivnya", 36.79],
     ["United States Dollar", 1],
@@ -98,6 +97,7 @@ function App() {
             currency={currency1}
             rates={rates}
             onCurrencyHandle={handleCurrency1Change}
+            defaultValue={1}
           />
           <Input amount={amount1} onHandleAmount={handleAmount1Change} />
         </Grid>
@@ -115,6 +115,8 @@ function App() {
             currency={currency2}
             rates={rates}
             onCurrencyHandle={handleCurrency2Change}
+            defaultValue={36.79}
+
           />
           <Input amount={amount2} onHandleAmount={handleAmount2Change} />
         </Grid>
