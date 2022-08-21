@@ -7,8 +7,6 @@ import Select from "./components/Select/Select";
 
 import WithLatestRates from "./context/LatestRates";
 
-import "./App.css";
-
 
 function App() {
   const [amount1, setAmount1] = useState(0);
