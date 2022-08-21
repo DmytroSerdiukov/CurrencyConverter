@@ -4,7 +4,6 @@ import React from "react";
 function Input({
   label,
   error,
-  currencyIcon,
   amount,
   onHandleAmount,
   ...props

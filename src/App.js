@@ -2,9 +2,9 @@ import { Grid } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
 import WithLatestRates from "./context/LatestRates";
-import Header from "./stories/Header/Header";
-import Input from "./stories/Input/Input";
-import Select from "./stories/Select/Select";
+import Header from "./components/Header/Header";
+import Input from "./components/Input/Input";
+import Select from "./components/Select/Select";
 
 function App() {
 
@@ -97,7 +97,7 @@ function App() {
             currency={currency1}
             rates={rates}
             onCurrencyHandle={handleCurrency1Change}
-            defaultValue={1}
+            defaultValue={36.79}
           />
           <Input amount={amount1} onHandleAmount={handleAmount1Change} />
         </Grid>
@@ -115,7 +115,7 @@ function App() {
             currency={currency2}
             rates={rates}
             onCurrencyHandle={handleCurrency2Change}
-            defaultValue={36.79}
+            defaultValue={1}
 
           />
           <Input amount={amount2} onHandleAmount={handleAmount2Change} />
