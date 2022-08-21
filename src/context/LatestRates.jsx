@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const LatestRatesContext = createContext()
 
 const myHeaders = new Headers();
-myHeaders.append("apikey", "qeUEC9JoJMhxtV0nRrxqJZs6Lj5W4ayK");
+myHeaders.append("apikey", "7DNeLJiTbvKWHzC1geNoLb9YlubtEi1Q");
 
 const requestOptions = {
   method: 'GET',
