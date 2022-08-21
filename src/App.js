@@ -8,8 +8,8 @@ import Select from "./components/Select/Select";
 
 function App() {
 
-  const [amount1, setAmount1] = useState();
-  const [amount2, setAmount2] = useState();
+  const [amount1, setAmount1] = useState(0);
+  const [amount2, setAmount2] = useState(0);
   const [currency1, setCurrency1] = useState(36.79);
   const [currency2, setCurrency2] = useState(1);
   const [rates, setRates] = useState([
@@ -35,7 +35,7 @@ function App() {
       setCurrency1(currency1);
       return;
     }
-    setAmount2((amount2 * currency2) / currency1);
+    setAmount1((amount2 * currency1) / currency2);
     setCurrency1(currency1);
   };
 
