@@ -1,13 +1,16 @@
+import React, { useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import { useState } from "react";
-import "./App.css";
-import WithLatestRates from "./context/LatestRates";
-import Header from "./components/Header/Header";
+
 import Input from "./components/Input/Input";
+import Header from "./components/Header/Header";
 import Select from "./components/Select/Select";
 
-function App() {
+import WithLatestRates from "./context/LatestRates";
 
+import "./App.css";
+
+
+function App() {
   const [amount1, setAmount1] = useState(0);
   const [amount2, setAmount2] = useState(0);
   const [currency1, setCurrency1] = useState(36.79);

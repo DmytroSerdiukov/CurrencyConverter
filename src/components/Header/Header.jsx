@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-
 import { Grid, Typography } from "@mui/material";
 import { US, EU } from "country-flag-icons/react/3x2";
 
 import { LatestRatesContext } from "../../context/LatestRates";
+
 
 const UsdToHrn = ({ rate }) => {
   return (
@@ -22,6 +22,7 @@ const EuroToHrn = ({ rate }) => {
     </div>
   );
 };
+
 
 function Header(props) {
   const { EUR, USD } = useContext(LatestRatesContext);
