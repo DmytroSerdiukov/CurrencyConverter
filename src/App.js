@@ -54,9 +54,9 @@ function App() {
         height: "100vh",
       }}
     >
-      {/* <WithLatestRates>
+      <WithLatestRates>
         <Header />
-      </WithLatestRates> */}
+      </WithLatestRates>
       <Grid
         container
         item
