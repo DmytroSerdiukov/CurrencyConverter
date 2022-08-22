@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Select from "./components/Select/Select";
 
 import WithLatestRates from "./context/LatestRates";
+import { compute } from "./helpers";
 
 
 function App() {
@@ -19,47 +20,31 @@ function App() {
     ["Euro", 0.9955],
   ]);
 
+
   const handleAmount1Change = (amount1) => {
-    if (currency1 === currency2) {
-      setAmount2(amount1);
-      setAmount1(amount1);
-      return;
-    }
-    setAmount2((amount1 * currency2) / currency1);
+    const res = compute(amount1, currency2, currency1)
+    setAmount2(res);
     setAmount1(amount1);
   };
 
   const handleCurrency1Change = (currency1) => {
-    if (currency1 === currency2) {
-      setCurrency1(currency1);
-      setAmount2(amount1);
-      setAmount1(amount1);
-      return;
-    }
-    setAmount2((amount1 * currency2) / currency1);
+    const res = compute(amount1, currency2, currency1)
+    setAmount2(res);
     setCurrency1(currency1);
   };
 
   const handleAmount2Change = (amount2) => {
-    if (currency1 === currency2) {
-      setAmount2(amount1);
-      setAmount1(amount1);
-      return;
-    }
-    setAmount1((amount2 * currency1) / currency2);
+    const res = compute(amount2, currency1, currency2)
+    setAmount1(res);
     setAmount2(amount2);
   };
 
   const handleCurrency2Change = (currency2) => {
-    if (currency2 === currency1) {
-      setCurrency2(currency2);
-      setAmount2(amount1);
-      setAmount1(amount1);
-      return;
-    }
-    setAmount2((amount1 * currency2) / currency1);
+    const res = compute(amount1, currency2, currency1)
+    setAmount2(res);
     setCurrency2(currency2);
   };
+
 
   return (
     <Grid
@@ -69,9 +54,9 @@ function App() {
         height: "100vh",
       }}
     >
-      <WithLatestRates>
+      {/* <WithLatestRates>
         <Header />
-      </WithLatestRates>
+      </WithLatestRates> */}
       <Grid
         container
         item
